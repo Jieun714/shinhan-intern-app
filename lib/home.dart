@@ -75,13 +75,45 @@ class MyAppState extends State<Home> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(
-          height: 50,
+          height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Icon(Icons.home_outlined),
-              Icon(Icons.show_chart),
-              Icon(Icons.menu),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home_outlined,
+                    color: Colors.blueAccent,
+                  ),
+                  Text(
+                    '홈',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.show_chart),
+                  Text('주식',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.menu),
+                  Text('전체',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                ],
+              ),
             ],
           ),
         ),
