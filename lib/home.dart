@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shinhan_intern_app/widget/kospi_kosdaq.dart';
 import 'package:shinhan_intern_app/widget/ranking.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,9 +22,12 @@ class MyAppState extends State<Home> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-                child: Image.asset(
-                  'img_ci.png',
-                  scale: 5,
+                child: GestureDetector(
+                  onTap: () => launchUrlString('https://www.shinhansec.com'),
+                  child: Image.asset(
+                    'img_ci.png',
+                    scale: 5,
+                  ),
                 ),
               )
             ],
