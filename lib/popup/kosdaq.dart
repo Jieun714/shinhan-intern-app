@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shinhan_intern_app/popup/stock_info.dart';
+import 'package:shinhan_intern_app/popup/kosdaq_chart.dart';
 
 class Kosdaq extends StatelessWidget {
   const Kosdaq({super.key});
@@ -44,9 +45,7 @@ class Kosdaq extends StatelessWidget {
             ),
 
             //주식 그래프
-            Container(
-                child: Text('주식 그래프 들어갈 예정')
-            ),
+            KosdaqChart(),
 
             //버튼
             Row(
@@ -54,7 +53,7 @@ class Kosdaq extends StatelessWidget {
               children: <Widget> [
                 TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1일"),),
                 TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1주일"),),
-                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("3개월"),),
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, backgroundColor: Color(0xffEFEFEF), padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("3개월"),),
                 TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1년"),),
                 TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("5년"),),
               ],
@@ -62,6 +61,7 @@ class Kosdaq extends StatelessWidget {
 
             Divider(thickness: 15, height: 60, color: Color(0xffEFEFEF)),
 
+            //주가 정보
             StockInfo(),
             //인기주식 버튼
             ElevatedButton(
