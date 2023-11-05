@@ -21,12 +21,12 @@ class MyAppState extends State<Home> {
           Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
+                padding: EdgeInsets.fromLTRB(20, 20, 0, 30),
                 child: GestureDetector(
                   onTap: () => launchUrlString('https://www.shinhansec.com'),
                   child: Image.asset(
                     'img_ci.png',
-                    scale: 5,
+                    scale: 4,
                   ),
                 ),
               )
@@ -37,7 +37,7 @@ class MyAppState extends State<Home> {
           Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
+                padding: EdgeInsets.fromLTRB(40, 0, 0, 20),
                 child: Text(
                   '주요 지수',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
@@ -48,7 +48,7 @@ class MyAppState extends State<Home> {
 
           // 코스피, 코스닥 컨테이너
           Container(
-            margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            margin: const EdgeInsets.fromLTRB(40, 0, 40, 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,7 +64,7 @@ class MyAppState extends State<Home> {
           Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
+                padding: EdgeInsets.fromLTRB(40, 20, 0, 20),
                 child: Text(
                   '실시간 인기 차트',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),

@@ -50,7 +50,7 @@ class Ranking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 0, 10),
+            padding: const EdgeInsets.fromLTRB(40, 0, 0, 10),
             child: Row(
               children: <Widget>[
                 Padding(
@@ -81,12 +81,13 @@ class Ranking extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 20, 20),
+            padding: const EdgeInsets.fromLTRB(0, 0, 40, 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                Text(item.price, style: TextStyle(color: item.color)),
+                Text(item.price,
+                    style: TextStyle(fontSize: 17, color: item.color)),
                 Text(item.percent,
                     style: TextStyle(fontSize: 12, color: item.color)),
               ],
