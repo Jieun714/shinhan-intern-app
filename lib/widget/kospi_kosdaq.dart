@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../popup/kosdaq.dart';
-import '../popup/kospi.dart';
+import 'package:shinhan_intern_app/popup/stock.dart';
 
 class KospiWidget extends StatelessWidget {
   const KospiWidget({super.key});
@@ -12,7 +10,7 @@ class KospiWidget extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Kospi()));
+              context, MaterialPageRoute(builder: (context) => Stock('kospi')));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -51,8 +49,8 @@ class KosdaqWidget extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Kosdaq()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Stock('kosdaq')));
         },
         child: Container(
           decoration: BoxDecoration(
