@@ -19,13 +19,6 @@ class Stock extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // appBar: AppBar(
-        //   leading: ElevatedButton(
-        //       onPressed: () {
-        //         Navigator.pop(context);
-        //       },
-        //       child: Icon(Icons.keyboard_arrow_left)),
-        // ),
         body: ListView(
           padding: EdgeInsets.all(20),
           children: <Widget> [
