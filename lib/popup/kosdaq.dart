@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shinhan_intern_app/popup/stock_info.dart';
 
 class Kosdaq extends StatelessWidget {
   const Kosdaq({super.key});
@@ -16,26 +17,30 @@ class Kosdaq extends StatelessWidget {
         ),
         body: ListView(
           padding: EdgeInsets.all(20),
-          children: [
-            //text
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text('코스닥', style: TextStyle(fontSize: 20),),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text('782.05', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-            ),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: '어제보다 '),
-                        TextSpan(text: '+9.21(1.1%)', style: TextStyle(color: Colors.red)),
-                      ],
+          children: <Widget> [
+            //주식 소개
+            Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text('코스닥', style: TextStyle(fontSize: 20),),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text('782.05', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Text.rich(
+                        TextSpan(
+                          children: <TextSpan> [
+                            TextSpan(text: '어제보다 '),
+                            TextSpan(text: '+9.21(1.1%)', style: TextStyle(color: Colors.red)),
+                          ],
+                        )
                     )
-                )
+                ),
+              ],
             ),
 
             //주식 그래프
@@ -45,54 +50,33 @@ class Kosdaq extends StatelessWidget {
 
             //버튼
             Row(
-                children:[
-                  Spacer(),
-                  TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1일"),), Spacer(),
-                  TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1주일"),), Spacer(),
-                  TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("3개월"),), Spacer(),
-                  TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1년"),), Spacer(),
-                  TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("5년"),), Spacer()
-                ]
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget> [
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1일"),),
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1주일"),),
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("3개월"),),
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("1년"),),
+                TextButton(onPressed: (){ }, style: OutlinedButton.styleFrom(primary: Colors.black, padding: EdgeInsets.fromLTRB(25, 13, 25, 13)), child: Text("5년"),),
+              ],
             ),
 
             Divider(thickness: 15, height: 60, color: Color(0xffEFEFEF)),
 
-            //간단한 주가 소개
-            DataTable(
-              columns: [
-                DataColumn(label: Text('시작')),
-                DataColumn(label: Align(alignment: Alignment.centerRight, child: Text('779.28'))),
-                DataColumn(label: Text('A')),
-                DataColumn(label: Text('거래량')),
-                DataColumn(label: Align(alignment: Alignment.centerRight, child: Text('8억 1,010만주')))
-              ],
-              rows: [
-                DataRow(cells: [
-                  DataCell(Text('최고')),
-                  DataCell(Align(alignment: Alignment.centerRight, child: Text('782.53'))),
-                  DataCell(Text('A')),
-                  DataCell(Text('최저')),
-                  DataCell(Align(alignment: Alignment.centerRight, child: Text('768.38')))
-                ])
-              ],
-            ),
-
-            Divider(thickness: 15, height: 40, color: Color(0xffFFFFFF)),
-
+            StockInfo(),
             //인기주식 버튼
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(	//모서리를 둥글게
                         borderRadius: BorderRadius.circular(10)),
                     primary: Color(0xff074EE8),
-                    textStyle: const TextStyle(fontSize: 16)
+                    textStyle: const TextStyle(fontSize: 16),
+                    fixedSize: Size(200, 50)
                 ),
                 onPressed: () {},
                 child: Text('인기주식 보기')
             )
           ],
         ),
-
       ),
     );
   }
