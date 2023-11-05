@@ -1,34 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:shinhan_intern_app/popup/chart/kosdaq_chart.dart';
+import 'package:shinhan_intern_app/popup/chart/kospi_chart.dart';
 import 'package:shinhan_intern_app/popup/stock_info.dart';
-import 'package:shinhan_intern_app/popup/kosdaq_chart.dart';
 
-class Kosdaq extends StatelessWidget {
-  const Kosdaq({super.key});
+class Stock extends StatelessWidget {
+  final choice;
+  const Stock(this.choice);
 
   @override
   Widget build(BuildContext context) {
+    final data;
+    if(choice == 'kosdaq'){
+      data = ['코스닥', '782.05', '+9.21(1.1%)', 'up'];
+    } else{
+      data = ['코스피', '2,368.34', '+25.22(1.0%)', 'up'];
+    }
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.keyboard_arrow_left)),
-        ),
+        // appBar: AppBar(
+        //   leading: ElevatedButton(
+        //       onPressed: () {
+        //         Navigator.pop(context);
+        //       },
+        //       child: Icon(Icons.keyboard_arrow_left)),
+        // ),
         body: ListView(
           padding: EdgeInsets.all(20),
           children: <Widget> [
+            //이전 버튼
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+                child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: Icon(Icons.keyboard_arrow_left),
+                  onPressed: () { Navigator.pop(context); },
+                )
+              )
+            ),
             //주식 소개
             Column(
               children: [
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text('코스닥', style: TextStyle(fontSize: 20),),
+                  child: Text(data[0], style: TextStyle(fontSize: 20),),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text('782.05', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  child: Text(data[1], style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 ),
                 Align(
                     alignment: Alignment.topLeft,
@@ -36,7 +57,7 @@ class Kosdaq extends StatelessWidget {
                         TextSpan(
                           children: <TextSpan> [
                             TextSpan(text: '어제보다 '),
-                            TextSpan(text: '+9.21(1.1%)', style: TextStyle(color: Colors.red)),
+                            TextSpan(text: data[2], style: TextStyle(color: (data[3] == 'up') ?Colors.red : Colors.blue)),
                           ],
                         )
                     )
@@ -45,7 +66,7 @@ class Kosdaq extends StatelessWidget {
             ),
 
             //주식 그래프
-            KosdaqChart(),
+            (choice =='kosdaq') ? KosdaqChart() : KospiChart(),
 
             //버튼
             Row(
@@ -62,7 +83,8 @@ class Kosdaq extends StatelessWidget {
             Divider(thickness: 15, height: 60, color: Color(0xffEFEFEF)),
 
             //주가 정보
-            StockInfo(),
+            StockInfo(choice),
+
             //인기주식 버튼
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -76,7 +98,7 @@ class Kosdaq extends StatelessWidget {
                 child: Text('인기주식 보기')
             )
           ],
-        ),
+        )
       ),
     );
   }
